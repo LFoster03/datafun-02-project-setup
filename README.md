@@ -1,13 +1,13 @@
 # datafun-02-project-setup
 New GitHub Repository for 2.4.
 """
-Module: case_project_setup
+Module: foster_project_setup
 
 Purpose: Provide functions to script project folders (and domonstrate basic Python coding skills).
 
 Description: This module provides functions for creating a series of project folders.
 
-Author: Denise Case
+Author: Lindsay Foster
 
 TODO: Change the module name in this opening docstring
 TODO: Change the author in this opening docstring
@@ -18,12 +18,10 @@ TODO: Change the author in this opening docstring
 #####################################
 
 # Import moduldes from standand library
-# TODO: Import additional modules as needed
-import pathlib
+import datetime
 
 # Import local modules
-# TODO: Change this to import your module and uncomment
-# import case_utils 
+import utils_foster
 
 #####################################
 # Declare global variables
@@ -44,7 +42,7 @@ data_path.mkdir(exist_ok=True)
 # Pass in an int for the last year
 #####################################
 
-def create_folders_for_range(start_year: int, end_year: int) -> None:
+def create_folders_for_range(start_year: 1990, end_year: 1995) -> None:
     '''
     Create folders for a given range of years.
     
@@ -55,6 +53,14 @@ def create_folders_for_range(start_year: int, end_year: int) -> None:
     
     # Log the function call and its arguments using an f-string
     print(f"FUNCTION CALLED: create_folders_for_range with start_year={start_year} and end_year={end_year}")
+    
+    for year in range(start_year, end_year + 1):
+        year_folder = data_path.joinpath(str(year))
+        if not year_folder.exists():
+            year_folder.mkdir()
+            print(f"Created folder: {year_folder}")
+        else:
+            print(f"Folder already exists: {year_folder}")
 
     # TODO: Implement the actual folder creation logic
     pass
@@ -66,6 +72,24 @@ def create_folders_for_range(start_year: int, end_year: int) -> None:
 #####################################
 
 def create_folders_from_list(folder_list: list) -> None:
+
+    '''
+    Create folders for each name in the provided list.
+    
+    Arguments:
+    folder_list -- A list of folder names to create.
+    '''
+    
+    print(f"FUNCTION CALLED: create_folders_from_list with folder_list={folder_list}")
+    
+    for folder_name in folder_list:
+        folder = data_path.joinpath(folder_name)
+        if not folder.exists():
+            folder.mkdir()
+            print(f"Created folder: {folder}")
+        else:
+            print(f"Folder already exists: {folder}")
+
     # TODO: Add docstring
     # TODO: Log the function call and its arguments
     # TODO: Implement this function and remove the temporary pass
@@ -80,6 +104,25 @@ def create_folders_from_list(folder_list: list) -> None:
 #####################################
 
 def create_prefixed_folders(folder_list: list, prefix: str) -> None:
+    '''
+    Create folders with a specified prefix added to each folder name.
+    
+    Arguments:
+    folder_list -- A list of folder names to transform.
+    prefix -- The prefix to add to each folder name.
+    '''
+    
+    print(f"FUNCTION CALLED: create_prefixed_folders with folder_list={folder_list} and prefix={data}")
+    
+    for folder_name in folder_list:
+        prefixed_folder_name = prefix + folder_name
+        prefixed_folder = data_path.joinpath(prefixed_folder_name)
+        if not prefixed_folder.exists():
+            prefixed_folder.mkdir()
+            print(f"Created folder: {prefixed_folder}")
+        else:
+            print(f"Folder already exists: {prefixed_folder}")
+    
     # TODO: Implement this function professionally and remove the temporary pass
     pass
 
@@ -90,7 +133,26 @@ def create_prefixed_folders(folder_list: list, prefix: str) -> None:
 # Pass in the wait time in seconds
 #####################################
 
-def create_folders_periodically(duration_seconds: int) -> None:
+def create_folders_periodically(duration_seconds: 5) -> None:
+    '''
+    Create folders at periodic intervals (e.g., one folder every 5 seconds).
+    
+    Arguments:
+    duration_seconds -- The wait time between folder creation.
+    '''
+    
+    print(f"FUNCTION CALLED: create_folders_periodically with duration_seconds={5}")
+    
+    for i in range(5):  # For example, create 5 folders
+        folder_name = f"periodic_folder_{i+1}"
+        folder = data_path.joinpath(folder_name)
+        if not folder.exists():
+            folder.mkdir()
+            print(f"Created folder: {folder}")
+        else:
+            print(f"Folder already exists: {folder}")
+        time.sleep(duration_seconds)
+        
     # TODO: Implement this function professionally and remove the temporary pass
     pass
 
